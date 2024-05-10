@@ -3,3 +3,5 @@ lxml
 requests
 tqdm
 urllib3
+selenium
+claude-api-py

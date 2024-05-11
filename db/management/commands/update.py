@@ -82,7 +82,7 @@ class Command(BaseCommand):
 
 
                 
-                time =datetime.datetime.now()
+                time =datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 product_object.synced_at = time
                 product_object.updated_at = time
                 product_object.product_hash = product_hash

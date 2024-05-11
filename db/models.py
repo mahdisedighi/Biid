@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 #
 class Type_Product(models.Model):
     name = models.CharField(max_length=100,unique=True)
@@ -18,3 +19,7 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(null=True ,blank=True)
     composed_at = models.DateTimeField(null=True ,blank=True)
+    
+    def save(self, *args, **kwargs):
+        self.created_at = timezone.now().replace(microsecond=0)
+        super().save(*args , **kwargs)

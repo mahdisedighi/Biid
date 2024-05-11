@@ -9,7 +9,9 @@ from db.models import Product
 from utils.api import Biid, Masterkala
 from utils.convert import masterkala_to_biid, hash_product
 
-
+# in file gharare kare update to anjam bede
+# ma dar ebteda moshkel update gheymat ro dashtim ke dar in rabete ma bayad be type kala deghat konim chon har kala tanavo mokhtalefi dare
+# dar enteha bayad behet bagem ke ma time update ro save mikonim ke mitoni to db bebini
 class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument("--product_ids", nargs="+", type=int, required=False)

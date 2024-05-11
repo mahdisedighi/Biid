@@ -8,6 +8,10 @@ from utils.api import Biid, Masterkala
 from utils.convert import masterkala_to_biid, hash_product
 import json
 
+# in code baraye add product az masterkala be biid shop estafade mishe
+# ma tamame moshakhati ke to masterkalamored estefade anjam mise ro be biid shop ovordim
+# bade ezafe kardan mahsole be biid shop ma time ezafe kardan oon ma sayer moshakasate kala ro be db ezafe mokonim
+
 
 class Command(BaseCommand):
 

@@ -75,7 +75,7 @@ class Command(BaseCommand):
                         b.update_product(product_detail['id'], {'description': description})
                         print(f"description for product id={product_detail['id']} produced successfully")
                         p = Product.objects.get(id=int(product['id']))
-                        p.composed_at = datetime.datetime.now()
+                        p.composed_at = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                         p.save()
                         if x % 6 == 0:
                             new_conversation_data = claude_obj.start_new_conversation("New Conversation", "hi claude")

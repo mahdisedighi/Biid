@@ -1,2 +1,2 @@
-git pull https://github.com/mahdisedighi/Biid.git
+git pull
 pause

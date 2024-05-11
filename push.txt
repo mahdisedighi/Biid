@@ -1,3 +1,0 @@
-add *
-commit -m 'update'
-push https://github.com/mahdisedighi/Biid.git

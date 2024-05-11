@@ -29,7 +29,7 @@ class Command(BaseCommand):
         b = Biid()
 
         for masterkala_product_short in mk.get_products():
-            
+            try:
                 if self.product_exists(masterkala_product_short):
                     print(f"product id={masterkala_product_short['product_id']} already exists")
                     continue
@@ -37,8 +37,7 @@ class Command(BaseCommand):
                 masterkala_product = mk.get_product(masterkala_product_short['product_id'])
                 biid_product, colors = masterkala_to_biid(masterkala_product)
 
-
-                #*********************************
+                # *********************************
 
                 if not biid_product['stock']:
                     print(f"product id={masterkala_product_short['product_id']} is out of stock")
@@ -54,7 +53,7 @@ class Command(BaseCommand):
                     print(f"product id={masterkala_product_short['product_id']} has no image")
                     continue
 
-                masterkala_product_id= int(masterkala_product_short['product_id'])
+                masterkala_product_id = int(masterkala_product_short['product_id'])
 
                 url = f"https://masterkala.com/product/{masterkala_product_id}"
                 driver = webdriver.Firefox()
@@ -69,11 +68,9 @@ class Command(BaseCommand):
                 li.pop(0)
 
                 driver.close()
-                
-                
 
-                brand = masterkala_product['manufacturer_name']                
-                product_id = b.add_product(biid_product,li,brand)
+                brand = masterkala_product['manufacturer_name']
+                product_id = b.add_product(biid_product, li, brand)
                 p = Product.objects.create(id=product_id,
                                            identifier=masterkala_product['product_id'],
                                            from_masterkala=True,
@@ -88,8 +85,8 @@ class Command(BaseCommand):
                 for attribute in masterkala_product_attributes:
                     try:
                         b.add_product_attribute(product_id,
-                                            attribute=attribute['name'],
-                                            value=attribute['text'])
+                                                attribute=attribute['name'],
+                                                value=attribute['text'])
                     except:
                         pass
 
@@ -100,8 +97,10 @@ class Command(BaseCommand):
 
                 value = biid_product['name']
                 pro_id = product_id
-                b.add_tag(product_id=pro_id , value=value)
+                b.add_tag(product_id=pro_id, value=value)
                 p.commit = True
                 p.save()
-                print(f"masterkala product id={masterkala_product_short['product_id']} successfully added to biid product id={product_id}")
-            
+                print(
+                    f"masterkala product id={masterkala_product_short['product_id']} successfully added to biid product id={product_id}")
+            except:
+                pass

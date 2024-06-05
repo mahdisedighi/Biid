@@ -27,7 +27,7 @@ class Command(BaseCommand):
         b = Biid()
         mk = Masterkala()
 
-        cookies = "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"
+        cookies = "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"
 
         client = claude_client.ClaudeClient(cookies)
 

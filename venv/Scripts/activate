@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\new\Desktop\dd\Biid\venv"
+VIRTUAL_ENV="D:\کسب و کار\سایت\biid\Script\Biid-master\Biid\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

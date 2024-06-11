@@ -8,7 +8,11 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
+<<<<<<< HEAD
 set VIRTUAL_ENV=C:\Users\new\Desktop\New folder (2)\Biid\venv
+=======
+set VIRTUAL_ENV=D:\کسب و کار\سایت\biid\Script\Biid-master\Biid\venv
+>>>>>>> cd353b638ca474dd8da7f2742626ce272c5c5df4
 
 if not defined PROMPT set PROMPT=$P$G
 

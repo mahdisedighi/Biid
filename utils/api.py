@@ -336,9 +336,11 @@ class Masterkala(BaseRequests):
     @staticmethod
     def is_used_product(product_details):
         for tag in product_details['tags']:
-            if tag['text'] in ['دارای ایراد ظاهری', 'جعبه آسیب دیده', 'دارای ایراد جزئی', 'دارای ایراد فنی']:
-                return True
-        return False
+            try:
+                if tag['text'] in ['دارای ایراد ظاهری', 'جعبه آسیب دیده', 'دارای ایراد جزئی', 'دارای ایراد فنی']:
+                    return True
+            except:
+                return False
 
     def get_products(self, page=1):
         url = f"{self.BASE_URL}/all_products"

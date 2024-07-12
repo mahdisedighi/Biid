@@ -42,6 +42,11 @@ class Command(BaseCommand):
                 if not biid_product['stock']:
                     print(f"product id={masterkala_product_short['product_id']} is out of stock")
                     continue
+                else:
+                    if int(float(masterkala_product["pricewithdiscount"])) < 1_930_000:
+                        biid_product['stock'] = 0
+                        biid_product['stock_type'] = 'out_of_stock'
+
 
                 masterkala_product_attributes = mk.get_product_attributes(masterkala_product_short['product_id'])
                 masterkala_product_details = mk.get_product_details(masterkala_product_short['product_id'])
@@ -58,7 +63,7 @@ class Command(BaseCommand):
                 url = f"https://masterkala.com/product/{masterkala_product_id}"
                 driver = webdriver.Firefox()
                 driver.get(url)
-                driver.implicitly_wait(100)
+                driver.implicitly_wait(50)
                 typee = driver.find_elements(By.CLASS_NAME, 'v-breadcrumbs__item')
 
                 li = []

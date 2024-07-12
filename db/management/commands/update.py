@@ -39,7 +39,14 @@ class Command(BaseCommand):
                 masterkala_product = mk.get_product(product_object.identifier)
                 
                 biid_product, colors = masterkala_to_biid(masterkala_product, before_price = before_price , main_category=main_category)
-
+                
+                
+                if biid_product["stock"]:
+                    if int(float(masterkala_product["pricewithdiscount"])) < 1_930_000:
+                        biid_product['stock'] = 0
+                        biid_product['stock_type'] = 'out_of_stock'
+                                                
+                        
                 product_hash = hash_product(biid_product)
                 if (product_object.product_hash == product_hash) and not options['product_ids']:
                     continue

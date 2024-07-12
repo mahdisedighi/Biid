@@ -29,8 +29,6 @@ def masterkala_to_biid(masterkala_product , before_price=None , main_category=2)
         biid_price = masterkala_price
 
 
-
-
     biid_product = {
         "name": masterkala_product["name"],
         "main_category": main_category,
@@ -38,7 +36,7 @@ def masterkala_to_biid(masterkala_product , before_price=None , main_category=2)
         "compare_at_price": math.ceil(biid_price * 100 / (100 - discount) / 10000) * 10000,
         "product_identifier": masterkala_product["model"],
         "stock": int(masterkala_product["quantity"]),
-        "stock_type": "unlimited" if int(masterkala_product["quantity"]) or (pricewithdiscount > 1_930_000) else "out_of_stock",
+        "stock_type": "unlimited" if int(masterkala_product["quantity"]) else "out_of_stock",
         "barcode": masterkala_product["model"]
     }
 
@@ -52,7 +50,7 @@ def masterkala_to_biid(masterkala_product , before_price=None , main_category=2)
         elif "گارانتی" in option["name"]:
             biid_product["guarantee"] = option["product_option_value"][0]["name"]
 
-    return biid_product, colors , pricewithdiscount
+    return biid_product, colors
 
 
 def hash_product(dictionary):

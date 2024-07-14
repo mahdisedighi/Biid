@@ -43,14 +43,17 @@ class Command(BaseCommand):
                 
                 if biid_product["stock"] == 1:
                     if int(float(masterkala_product["pricewithdiscount"])) < 1_930_000:
+                        print(biid_product["stock"] , "\n")
                         biid_product['stock'] = 0
                         biid_product['stock_type'] = 'out_of_stock'
-                        print("yes")
+                        print(biid_product["stock"] , "\n")
+                        print(int(float(masterkala_product["pricewithdiscount"])))
+
                                                 
                         
                 product_hash = hash_product(biid_product)
-                if (product_object.product_hash == product_hash) and not options['product_ids']:
-                    continue
+                # if (product_object.product_hash == product_hash) and not options['product_ids']:
+                #     continue
 
                 product_object.commit = False
                 product_object.save()
@@ -84,7 +87,11 @@ class Command(BaseCommand):
                 variants = b.get_product_variants(product_object.id)
                 for variant in variants:
                     b.update_product_variant(product_object.id, variant['id'],
-                                                 {'product_identifier': biid_product['barcode'] , "price" : biid_product['price'] , 'compare_at_price': biid_product['compare_at_price'] })
+                                                 {'product_identifier': biid_product['barcode'] ,
+                                                  "price" : biid_product['price'] ,
+                                                  'compare_at_price': biid_product['compare_at_price'] ,
+                                                  "stock" :biid_product["stock"] ,
+                                                  "stock_type" : biid_product["stock_type"]})
         
             
 

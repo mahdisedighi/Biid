@@ -45,7 +45,8 @@ class Command(BaseCommand):
                     if int(float(masterkala_product["pricewithdiscount"])) < 1_930_000:
                         biid_product['stock'] = 0
                         biid_product['stock_type'] = 'out_of_stock'
-                                                
+
+
                         
                 product_hash = hash_product(biid_product)
                 if (product_object.product_hash == product_hash) and not options['product_ids']:

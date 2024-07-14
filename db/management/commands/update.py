@@ -43,12 +43,8 @@ class Command(BaseCommand):
                 
                 if biid_product["stock"] == 1:
                     if int(float(masterkala_product["pricewithdiscount"])) < 1_930_000:
-                        print(biid_product["stock"] , "\n")
                         biid_product['stock'] = 0
                         biid_product['stock_type'] = 'out_of_stock'
-                        print(biid_product["stock"] , "\n")
-                        print(int(float(masterkala_product["pricewithdiscount"])))
-
                                                 
                         
                 product_hash = hash_product(biid_product)

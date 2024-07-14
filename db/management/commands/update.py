@@ -48,8 +48,8 @@ class Command(BaseCommand):
                                                 
                         
                 product_hash = hash_product(biid_product)
-                # if (product_object.product_hash == product_hash) and not options['product_ids']:
-                #     continue
+                if (product_object.product_hash == product_hash) and not options['product_ids']:
+                    continue
 
                 product_object.commit = False
                 product_object.save()
